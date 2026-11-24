@@ -1,15 +1,20 @@
 import { notFound } from "next/navigation";
 import { BarraDatos } from "@/components/BarraDatos";
+import { Cierre } from "@/components/Cierre";
+import { ComoFunciona } from "@/components/ComoFunciona";
 import { Hero } from "@/components/Hero";
-import { SeccionPendiente } from "@/components/SeccionPendiente";
+import { Pie } from "@/components/Pie";
+import { Preguntas } from "@/components/Preguntas";
+import { Pruebas } from "@/components/Pruebas";
+import { Residencias } from "@/components/Residencias";
 import { Servicios } from "@/components/Servicios";
+import { BotonFijoCelular } from "@/components/ui/BotonFijoCelular";
 import { site } from "@/content/site";
 import { esIdioma, t } from "@/lib/i18n";
 
 export default async function Pagina({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
   if (!esIdioma(lang)) notFound();
-  const aviso = t(site.accesibilidad.pendiente, lang);
 
   return (
     <>
@@ -20,18 +25,18 @@ export default async function Pagina({ params }: PageProps<"/[lang]">) {
         {t(site.accesibilidad.saltarFormulario, lang)}
       </a>
       <main>
-        {/* 1–3 · oscuro */}
+        {/* Ritmo de fondos: oscuro (1–3) → claro (4–5) → oscuro (6) → claro (7) → oscuro (8–9) */}
         <Hero idioma={lang} />
         <BarraDatos idioma={lang} />
         <Servicios idioma={lang} />
-
-        {/* 4–9 · marcadores temporales (tareas 10 a 18) */}
-        <SeccionPendiente id="residencias" tono="claro" etiqueta={t(site.residencias.etiqueta, lang)} titulo={t(site.residencias.titular, lang)} aviso={aviso} />
-        <SeccionPendiente id="como-funciona" tono="claro" etiqueta={t(site.proceso.etiqueta, lang)} titulo={t(site.proceso.titular, lang)} aviso={aviso} />
-        <SeccionPendiente id="pruebas" tono="oscuro" etiqueta={t(site.pruebas.etiqueta, lang)} titulo={t(site.pruebas.titular, lang)} aviso={aviso} />
-        <SeccionPendiente id="preguntas" tono="claro" etiqueta={t(site.faq.etiqueta, lang)} titulo={t(site.faq.titular, lang)} aviso={aviso} />
-        <SeccionPendiente id="formulario" tono="oscuro" etiqueta={t(site.cta.principal, lang)} titulo={t(site.cierre.titular, lang)} aviso={aviso} />
+        <Residencias idioma={lang} />
+        <ComoFunciona idioma={lang} />
+        <Pruebas idioma={lang} />
+        <Preguntas idioma={lang} />
+        <Cierre idioma={lang} />
       </main>
+      <Pie idioma={lang} />
+      <BotonFijoCelular texto={t(site.cta.principal, lang)} />
     </>
   );
 }

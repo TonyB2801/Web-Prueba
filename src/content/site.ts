@@ -58,7 +58,6 @@ export const site = {
   accesibilidad: {
     saltarFormulario: { en: "Skip to the form", es: "Saltar al formulario" }, // (propuesta)
     cerrar: { en: "Close", es: "Cerrar" }, // (propuesta)
-    pendiente: { en: "Section in progress", es: "Sección en construcción" }, // (propuesta)
   },
 
   idioma: {
@@ -151,6 +150,8 @@ export const site = {
     zonas: ["Downtown Miami", "Wynwood", "Miami Beach"],
     edificios,
     zonaDeEdificio: igual("[COMPLETAR: zona de cada edificio]"),
+    zonasTitulo: { en: "Areas", es: "Zonas" }, // (propuesta)
+    edificiosTitulo: { en: "Buildings", es: "Edificios" }, // (propuesta)
   },
 
   proceso: {
@@ -158,6 +159,7 @@ export const site = {
     titular: igual("[COMPLETAR]"),
     acento: igual("[COMPLETAR]"),
     contador: { en: "{n} / {total}", es: "{n} / {total}" },
+    pasoAria: { en: "Step {n} of {total}", es: "Paso {n} de {total}" }, // (propuesta)
     video: { en: "See how it works", es: "Ver cómo funciona" },
     pasos: [
       {
@@ -197,6 +199,8 @@ export const site = {
 
   pruebas: {
     etiqueta: { en: "GUEST REVIEWS", es: "RESEÑAS DE HUÉSPEDES" },
+    rotulo: { en: "Guest review", es: "Reseña de huésped" }, // (propuesta) cada reseña va rotulada
+    rotuloPropietario: { en: "Owner", es: "Propietario" }, // (propuesta)
     titular: igual("[COMPLETAR]"),
     resenas: [
       { texto: igual("[COMPLETAR: texto, nombre de pila y permiso de publicación]"), nombre: "[COMPLETAR]" },
@@ -287,6 +291,7 @@ export const site = {
       es: "Revisamos tu residencia y te escribimos en [COMPLETAR: plazo].",
     },
     paso3: { en: "You receive your analysis and decide.", es: "Recibes el análisis y decides." },
+    pasosTitulo: { en: "What happens next", es: "Qué pasa después" }, // (propuesta)
   },
 
   form: {
@@ -299,6 +304,11 @@ export const site = {
       en: "Which building is your residence in?",
       es: "¿En qué edificio está tu residencia?",
     },
+    obligatorio: { en: "required", es: "obligatorio" }, // (propuesta) solo para lectores de pantalla
+    erroresResumen: {
+      en: "Please review the highlighted fields.",
+      es: "Revisa los campos marcados.",
+    }, // (propuesta)
     edificioVacio: { en: "Choose your building", es: "Elige tu edificio" }, // (propuesta)
     otroEdificio: { en: "Other building", es: "Otro edificio" }, // (propuesta, decidido)
     enviar: { en: "Request your free analysis", es: "Solicita tu análisis gratuito" },
@@ -336,6 +346,9 @@ export const site = {
 
   pie: {
     contacto: igual("[COMPLETAR: correo y teléfono]"),
+    contactoTitulo: { en: "Contact", es: "Contacto" }, // (propuesta)
+    zonasTitulo: { en: "Areas", es: "Zonas" }, // (propuesta)
+    privacidadPendiente: igual("[COMPLETAR: enlace]"),
     privacidad: { en: "Privacy policy", es: "Política de privacidad" },
     privacidadEnlace: null as string | null, // [COMPLETAR: enlace]
     marca: igual("© KeyStays Residences"),

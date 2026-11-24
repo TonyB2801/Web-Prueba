@@ -165,36 +165,38 @@
   --breakpoint-xl: 1440px;
 }
 
-/* ---------- Base ---------- */
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-}
+/* ---------- Base (en @layer base para que las utilidades de Tailwind tengan prioridad) ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
 
-body {
-  background: var(--color-fondo-oscuro);
-  color: var(--color-texto-oscuro);
-  font-family: var(--fuente-texto);
-  font-size: var(--texto-base);
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
+  body {
+    background: var(--color-fondo-oscuro);
+    color: var(--color-texto-oscuro);
+    font-family: var(--fuente-texto);
+    font-size: var(--texto-base);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
 
-h1,
-h2,
-h3 {
-  font-family: var(--fuente-titular);
-  text-wrap: balance;
-}
+  h1,
+  h2,
+  h3 {
+    font-family: var(--fuente-titular);
+    text-wrap: balance;
+  }
 
-:focus-visible {
-  outline: 2px solid var(--color-acento);
-  outline-offset: 4px;
-}
+  :focus-visible {
+    outline: 2px solid var(--color-acento);
+    outline-offset: 4px;
+  }
 
-/* Sobre fondo claro el foco usa el acento legible */
-.tono-claro :focus-visible {
-  outline-color: var(--color-acento-texto-claro);
+  /* Sobre fondo claro el foco usa el acento legible */
+  .tono-claro :focus-visible {
+    outline-color: var(--color-acento-texto-claro);
+  }
 }
 
 /* ---------- Revelar (animación de entrada) ---------- */

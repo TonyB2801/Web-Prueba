@@ -30,8 +30,15 @@ Reglas: ningún texto, color, fuente ni tamaño fijo dentro de un componente.
 Mientras no esté la licencia, se usa Manrope como respaldo. Para activarla: copiar
 `Satoshi-Variable.woff2` en `public/fonts/` y descomentar el `@font-face` de `globals.css`.
 
+## Formulario
+
+Valida y muestra la confirmación, pero **no envía ni guarda nada** todavía.
+El punto de conexión está en `src/lib/envio.ts`; las reglas, en `src/lib/validacion.ts`.
+No publicar en el dominio final hasta conectar el envío real.
+
 ## Estado
 
-Hechas las tareas 1–9 de la ficha (base, fuentes, rutas, selector de idioma, componentes `ui`,
-Revelar, Hero, BarraDatos, Servicios). ModalVideo funciona de forma básica (tarea 12 parcial).
-Las secciones 4–9 son marcadores temporales (`SeccionPendiente`).
+Hechas las tareas 1–18 de la ficha: las 9 secciones en celular, formulario con validación,
+botón fijo en celular, pie y selector de idioma (arriba y en el pie).
+ModalVideo funciona con un marcador hasta que llegue el video.
+Pendiente: 19 (ajuste fino de escritorio) a 24 (publicación).
