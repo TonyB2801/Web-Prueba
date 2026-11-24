@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+/*
+ * Sistema visual de KeyStays (ficha técnica, sección 6).
+ * Los componentes NO llevan colores, fuentes ni tamaños fijos: todo sale de aquí.
+ * (propuesta) = valor nuestro, pendiente de aprobación de la marca.
+ */
+
+/* Satoshi: activar cuando se confirme la licencia y esté el archivo en public/fonts.
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Variable.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+}
+*/
+
+:root {
+  /* ---------- Colores ---------- */
+  --color-fondo-oscuro: #0e0e0c;
+  --color-fondo-claro: #f4f1ea;
+  --color-texto-oscuro: #f6f3ec; /* texto sobre oscuro · 17.4:1 */
+  --color-texto-claro: #1a1a18; /* texto sobre claro · 15.5:1 */
+  --color-secundario-oscuro: #a9a79d; /* 8.0:1 */
+  --color-secundario-claro: #5e5b52; /* 6.0:1 */
+  --color-tarjeta-oscuro: #1a1a17;
+  --color-tarjeta-claro: #fbf9f4;
+  --color-acento: #faae33; /* [COMPLETAR con la marca: #FAAE33 o #FE9F27] · 10.3:1 */
+  --color-acento-texto-claro: #8a5a14; /* (propuesta) · 5.2:1 */
+  --color-boton: #ffffff;
+  --color-boton-texto: #1a1a18;
+  --color-boton-hover: #faae33; /* decidido: dorado (propuesta) */
+  --color-linea-oscuro: rgb(246 243 236 / 0.15);
+  --color-linea-claro: rgb(26 26 24 / 0.15);
+  --color-error-oscuro: #f08a80; /* (propuesta) · validar en tarea 15 */
+  --color-error-claro: #a3352b; /* (propuesta) · validar en tarea 15 */
+  --color-velo-hero-arriba: rgb(14 14 12 / 0.55);
+  --color-velo-hero-abajo: rgb(14 14 12 / 0.7);
+
+  /* ---------- Tipografía ---------- */
+  --fuente-titular: "Satoshi", var(--font-respaldo-sans), system-ui, sans-serif;
+  --fuente-texto: "Satoshi", var(--font-respaldo-sans), system-ui, sans-serif;
+  --fuente-acento: var(--font-instrument-serif), Georgia, serif; /* (propuesta) */
+  --fuente-etiqueta: var(--font-plex-mono), ui-monospace, monospace; /* (propuesta) */
+
+  --texto-hero: 42px;
+  --texto-h2: 32px;
+  --texto-subtitulo: 18px;
+  --texto-tarjeta: 20px;
+  --texto-base: 18px;
+  --texto-boton: 16px;
+  --texto-etiqueta: 12px;
+  --texto-pequeno: 14px;
+  --texto-dato: 28px; /* (propuesta) valor de la barra de datos */
+
+  /* ---------- Espaciado y forma ---------- */
+  --espacio-base: 8px;
+  --seccion-y: 80px;
+  --margen-lateral: 20px;
+  --contenedor: 1280px;
+  --medianil: 24px;
+  --radio-tarjeta: 20px;
+  --radio-boton: 9999px;
+  --toque-minimo: 48px;
+  --alto-campo: 56px;
+  --relleno-tarjeta: 24px;
+
+  /* ---------- Movimiento ---------- */
+  --mov-entrada: 600ms;
+  --mov-desplazamiento: 20px;
+  --mov-escalonado: 70ms;
+  --mov-rapido: 200ms;
+  --mov-acordeon: 300ms;
+  --curva-salida: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --relleno-tarjeta: 32px;
+    --margen-lateral: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --texto-hero: 80px;
+    --texto-h2: 52px;
+    --texto-subtitulo: 22px;
+    --texto-tarjeta: 22px;
+    --texto-dato: 36px;
+    --seccion-y: 140px;
+  }
+}
+
+/* Puente con Tailwind: las utilidades leen las variables de arriba. */
+@theme inline {
+  --color-fondo-oscuro: var(--color-fondo-oscuro);
+  --color-fondo-claro: var(--color-fondo-claro);
+  --color-texto-oscuro: var(--color-texto-oscuro);
+  --color-texto-claro: var(--color-texto-claro);
+  --color-secundario-oscuro: var(--color-secundario-oscuro);
+  --color-secundario-claro: var(--color-secundario-claro);
+  --color-tarjeta-oscuro: var(--color-tarjeta-oscuro);
+  --color-tarjeta-claro: var(--color-tarjeta-claro);
+  --color-acento: var(--color-acento);
+  --color-acento-texto-claro: var(--color-acento-texto-claro);
+  --color-boton: var(--color-boton);
+  --color-boton-texto: var(--color-boton-texto);
+  --color-boton-hover: var(--color-boton-hover);
+  --color-linea-oscuro: var(--color-linea-oscuro);
+  --color-linea-claro: var(--color-linea-claro);
+  --color-error-oscuro: var(--color-error-oscuro);
+  --color-error-claro: var(--color-error-claro);
+
+  --font-titular: var(--fuente-titular);
+  --font-texto: var(--fuente-texto);
+  --font-acento: var(--fuente-acento);
+  --font-etiqueta: var(--fuente-etiqueta);
+
+  --text-hero: var(--texto-hero);
+  --text-hero--line-height: 1.05;
+  --text-hero--letter-spacing: -0.03em;
+  --text-hero--font-weight: 600;
+  --text-h2: var(--texto-h2);
+  --text-h2--line-height: 1.1;
+  --text-h2--letter-spacing: -0.02em;
+  --text-h2--font-weight: 600;
+  --text-subtitulo: var(--texto-subtitulo);
+  --text-subtitulo--line-height: 1.5;
+  --text-tarjeta: var(--texto-tarjeta);
+  --text-tarjeta--line-height: 1.3;
+  --text-tarjeta--font-weight: 600;
+  --text-base: var(--texto-base);
+  --text-base--line-height: 1.5;
+  --text-boton: var(--texto-boton);
+  --text-boton--line-height: 1.2;
+  --text-boton--font-weight: 600;
+  --text-etiqueta: var(--texto-etiqueta);
+  --text-etiqueta--line-height: 1.4;
+  --text-etiqueta--letter-spacing: 0.14em;
+  --text-pequeno: var(--texto-pequeno);
+  --text-pequeno--line-height: 1.4;
+  --text-dato: var(--texto-dato);
+  --text-dato--line-height: 1.1;
+  --text-dato--letter-spacing: -0.02em;
+  --text-dato--font-weight: 600;
+
+  --spacing-seccion: var(--seccion-y);
+  --spacing-lateral: var(--margen-lateral);
+  --spacing-medianil: var(--medianil);
+  --spacing-toque: var(--toque-minimo);
+  --spacing-campo: var(--alto-campo);
+  --spacing-tarjeta: var(--relleno-tarjeta);
+  --container-contenedor: var(--contenedor);
+  --radius-tarjeta: var(--radio-tarjeta);
+  --radius-boton: var(--radio-boton);
+  --ease-salida: var(--curva-salida);
+  --duration-rapido: var(--mov-rapido);
+}
+
+/* Breakpoints de la ficha: base 390 · md 768 · lg 1024 · xl 1440 */
+@theme {
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1440px;
+}
+
+/* ---------- Base ---------- */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-fondo-oscuro);
+  color: var(--color-texto-oscuro);
+  font-family: var(--fuente-texto);
+  font-size: var(--texto-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--fuente-titular);
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-acento);
+  outline-offset: 4px;
+}
+
+/* Sobre fondo claro el foco usa el acento legible */
+.tono-claro :focus-visible {
+  outline-color: var(--color-acento-texto-claro);
+}
+
+/* ---------- Revelar (animación de entrada) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .js .revelar {
+    opacity: 0;
+    transform: translateY(var(--mov-desplazamiento));
+    transition:
+      opacity var(--mov-entrada) var(--curva-salida),
+      transform var(--mov-entrada) var(--curva-salida);
+    transition-delay: calc(var(--orden, 0) * var(--mov-escalonado));
+  }
+  .js .revelar[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+/* Modal de video (dialog nativo) */
+dialog::backdrop {
+  background: var(--color-velo-hero-abajo);
+}
