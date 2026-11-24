@@ -47,7 +47,14 @@ export const site = {
       en: "KeyStays | Miami Property Management", // (propuesta)
       es: "KeyStays | Gestión de propiedades en Miami",
     },
-    descripcion: igual("[COMPLETAR]"),
+    // (propuesta) Redactada solo con afirmaciones aprobadas. Requiere aprobación del cliente.
+    descripcion: {
+      en: "Full-service management for your Miami residence in Downtown Miami, Wynwood and Miami Beach, with our own housekeeping and maintenance teams. Request your free analysis.",
+      es: "Gestión integral de tu residencia en Downtown Miami, Wynwood y Miami Beach, con equipos propios de limpieza y mantenimiento. Solicita tu análisis gratuito.",
+    },
+    // [COMPLETAR: imagen de 1200 × 630 → public/images/og.jpg]
+    imagenOg: null as string | null,
+    localeOg: { en: "en_US", es: "es_ES" },
   },
 
   cta: {
@@ -64,8 +71,9 @@ export const site = {
     en: igual("EN"),
     es: igual("ES"),
     aria: { en: "Change language", es: "Cambiar idioma" },
-    nombreEn: { en: "English", es: "Inglés" },
-    nombreEs: { en: "Spanish", es: "Español" },
+    // Cada idioma se nombra en su propia lengua (el enlace lleva lang="en" / lang="es").
+    nombreEn: igual("English"),
+    nombreEs: igual("Español"),
   },
 
   hero: {

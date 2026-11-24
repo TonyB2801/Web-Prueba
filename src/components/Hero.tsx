@@ -44,7 +44,7 @@ export function Hero({ idioma }: { idioma: Idioma }) {
       </header>
 
       <div className="mx-auto flex w-full max-w-contenedor flex-1 flex-col justify-end px-lateral pt-16 pb-16 lg:justify-center lg:pb-24">
-        <div className="flex max-w-4xl flex-col gap-6 lg:gap-8">
+        <div className="flex flex-col gap-6 lg:gap-8">
           <Revelar orden={0}>
             <p className="font-etiqueta text-etiqueta uppercase text-acento">{t(hero.zonas, idioma)}</p>
           </Revelar>

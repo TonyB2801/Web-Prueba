@@ -37,7 +37,6 @@ export function SelectorIdioma({ idioma }: { idioma: Idioma }) {
                 hrefLang={codigo}
                 lang={codigo}
                 aria-current={activo ? "true" : undefined}
-                aria-label={nombres[codigo]}
                 onClick={(e) => {
                   document.cookie = `${cookieIdioma}=${codigo}; path=/; max-age=31536000; samesite=lax`;
                   const id = seccionVisible();
@@ -48,6 +47,7 @@ export function SelectorIdioma({ idioma }: { idioma: Idioma }) {
                 }`}
               >
                 {t(site.idioma[codigo], idioma)}
+                <span className="sr-only"> {nombres[codigo]}</span>
               </a>
             </li>
           );

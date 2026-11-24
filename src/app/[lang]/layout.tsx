@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { IBM_Plex_Mono, Instrument_Serif, Manrope } from "next/font/google";
 import { site } from "@/content/site";
-import { esIdioma, idiomas, t } from "@/lib/i18n";
+import { esIdioma, idiomaPorDefecto, idiomas, t } from "@/lib/i18n";
+import { permitirIndexar, urlSitio } from "@/lib/sitio";
 import "../globals.css";
 
 // Respaldo de Satoshi mientras se confirma su licencia (sans geométrica libre).
@@ -38,9 +39,31 @@ export async function generateMetadata({
 }: LayoutProps<"/[lang]">): Promise<Metadata> {
   const { lang } = await params;
   if (!esIdioma(lang)) return {};
+  const titulo = t(site.seo.titulo, lang);
+  const descripcion = t(site.seo.descripcion, lang);
+  const otro = idiomas.find((i) => i !== lang)!;
+
   return {
-    title: t(site.seo.titulo, lang),
-    description: t(site.seo.descripcion, lang),
+    metadataBase: new URL(urlSitio),
+    title: titulo,
+    description: descripcion,
+    alternates: {
+      canonical: `/${lang}`,
+      languages: { en: "/en", es: "/es", "x-default": `/${idiomaPorDefecto}` },
+    },
+    openGraph: {
+      type: "website",
+      siteName: site.marca.nombre,
+      title: titulo,
+      description: descripcion,
+      url: `/${lang}`,
+      locale: t(site.seo.localeOg, lang),
+      alternateLocale: t(site.seo.localeOg, otro),
+      ...(site.seo.imagenOg && {
+        images: [{ url: site.seo.imagenOg, width: 1200, height: 630, alt: t(site.hero.imagen.alt, lang) }],
+      }),
+    },
+    robots: permitirIndexar ? { index: true, follow: true } : { index: false, follow: false },
   };
 }
 

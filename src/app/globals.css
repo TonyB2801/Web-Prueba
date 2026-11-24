@@ -186,6 +186,7 @@
   h3 {
     font-family: var(--fuente-titular);
     text-wrap: balance;
+    overflow-wrap: break-word;
   }
 
   :focus-visible {

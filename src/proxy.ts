@@ -25,6 +25,7 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Todo menos archivos estáticos, internos de Next, sitemap y robots.
-  matcher: ["/((?!_next|images|video|fonts|brand|favicon.ico|sitemap.xml|robots.txt).*)"],
+  // Todo menos los internos de Next y cualquier archivo con extensión
+  // (imágenes, fuentes, icon.svg, sitemap.xml, robots.txt…).
+  matcher: ["/((?!_next|.*\\..*).*)"],
 };
